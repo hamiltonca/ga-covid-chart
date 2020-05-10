@@ -80,22 +80,19 @@ export default class CovidChart extends Component {
             }
 
         };
-        this.chartContext = {};
         this.drawChart = this.drawChart.bind(this);
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.drawChart();
     }
 
-    componentWillUnmount() {
-        console.log("componentWillUnmount")
-        // if (this.chart instanceof Chart) {
-        //     this.chart.destroy();
-        //     this.chart = undefined;
-        // }
-
-    }
     drawChart = () => {
+        //
+        // If there was a previous chart, destroy it.
+        // This is needed to clear the various rollover events
+        // from the old chart causing it to appear in the current chart's view
+        // when you roll over one of the old plot points.
+        //
         if (this.chart instanceof Chart) {
             this.chart.destroy();
         }
@@ -107,27 +104,22 @@ export default class CovidChart extends Component {
                     dataset.data = this.props.infections;
                     break;
                 case 1:
-                    let lastcount = 0;
+                    let lastCount = 0;
                     dataset.data = this.props.infections.map( (item, index) => {
-                        let retval = 0
-                        if (index > 0) {
-                            retval = item - lastcount;
-                            //console.log("item: " + item + " lastcount: " + lastcount + " retval:" + retval);
-                        }
-                        lastcount = item;
-                        return retval;
+                        const retVal = index > 0 ? item - lastCount : 0;
+                        lastCount = item;
+                        return retVal;
                     });
                     break;
                 case 2:
                     dataset.data = this.props.deaths;
                     break;
                 case 3:
-                    let deathcount = 0;
+                    let deathCount = 0;
                     dataset.data = this.props.deaths.map( (item, index) => {
-                        let retval = 0;
-                        if (index > 0) { retval = item - deathcount; }
-                        deathcount = item;
-                        return retval;
+                        const retVal = index > 0 ? item - deathCount : 0;
+                        deathCount = item;
+                        return retVal;
                     });
                     break;
                 default:

@@ -37,11 +37,18 @@
   }
 }
 .chartStyle {
-  margin: 2% 2% 0% 2%;
+  height: 60%;
+  margin: 2% 2% 0 2%;
 }
 .selectStyle {
-  margin:  0 45%;
+  margin: 0 2%;
+  text-align: center;
 }
 .info {
-  margin: 2% 20%;
+  text-align: center;
+  font-size: small;
+  line-break: auto;
+}
+.label {
+  font-size: small;
 }

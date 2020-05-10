@@ -27,7 +27,7 @@ export default class App extends Component {
 
 
     selectCounty(selectedCounty) {
-        console.log("selectedCounty:" + selectedCounty);
+        console.log("App.js selectedCounty:" + selectedCounty);
         this.setState( () => (
             {
                 selectedCounty,
@@ -85,8 +85,11 @@ export default class App extends Component {
                   selectCounty={this.selectCounty}
                   countyNames={this.state.countyNames} />
               <div className="info">
-                  <p>The data used for this chart is collected from the Georgia Department of Health web site.</p>
-                  <p>Here: <a href="https://dph.georgia.gov/covid-19-daily-status-report">https://dph.georgia.gov/covid-19-daily-status-report</a></p>
+                  <div>The data used for this chart is collected from the
+                  Georgia Department of Health
+                  web site.</div>
+                  <p>A link is provided below.<br/>
+                  <a href="https://dph.georgia.gov/covid-19-daily-status-report">Georgia Dept. of Health</a></p>
               </div>
           </div>
       );
