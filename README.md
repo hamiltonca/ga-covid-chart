@@ -1,3 +1,12 @@
+#ga-covid-chart
+This is a React app that displays a simple series of line graphs for the infection and death rates in Georgia by county.
+The default county is Fulton,GA and is displayed when the page loads. The user can select a different county to 
+display by choosing one in the selection list.
+
+All data is fetched on the initial load, county selections select data from that fetched data set without 
+additional loads. 
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
